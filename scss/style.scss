@@ -1,0 +1,76 @@
+$baseColor: #555;
+$baseColorDark: darken($baseColor, 5%);
+$baseFont: consolas,"Microsoft Yahei";
+$baseRadius: 4px;
+
+$white: #fff;
+$black: #5C6166;
+$gray: #ddd;
+$red: #D95C5C;
+$green: #58cb73;
+$blue: #6ECFF5;
+$orange: #E96633;
+$purple: #564F8A;
+$teal: #00B5AD;
+
+$padding-xs: 0 0;
+$padding-sm: 2px 5px;
+$padding-md: 10px 20px;
+$padding-lg: 15px 30px;
+$padding-hg: 20px 40px;
+
+
+/* 链接 */
+a{
+    color: $baseColor;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
+    }
+    &.btn:hover{
+        text-decoration: none;
+    }
+}
+
+/* 按钮 */
+.btn{
+    border: 1px solid $gray;
+    padding: $padding-md;
+    color: $baseColor;
+    text-align: center;
+    cursor: pointer;
+    -moz-border-radius: $baseRadius;
+    -webkit-border-radius: $baseRadius;
+    border-radius: $baseRadius;
+    &:hover{
+        background-color: $gray;
+        border-color: darken($gray, 5%);
+        color: darken($baseColor, 5%);
+    }
+}
+
+$btns: (primary: $blue, info: $teal, success: $green, warning: $orange, danger: $red, inverse: $black);
+@each $type, $color in $btns{
+    .btn-#{$type} {
+        background-color: $color;
+        border-color: darken($color, 5%);
+        color: $white;
+        &:hover{
+            color: $white;
+            background-color: darken($color, 10%);        
+            border-color: darken($color, 15%);
+        }
+    }
+}
+
+$btnSize: (xs 3px 3px 9px), (sm 5px 10px 12px), (lg 15px 30px 20px), (hg 20px 40px 28px);
+@each $size in $btnSize{
+    $type:      nth($size, 1);
+    $padding:   nth($size, 2) nth($size, 3);
+    $font-size: nth($size, 4);
+
+    .btn-#{$type} {
+        padding: $padding;
+        font-size: $font-size;
+    }
+}
